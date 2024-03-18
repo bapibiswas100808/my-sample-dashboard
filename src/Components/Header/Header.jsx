@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 
 const Header = ({ handleToggle }) => {
   return (
-    <div className="p-3 flex justify-between items-center bg-violet-100 border-b-2 border-gray-400">
+    <div className="text-black p-3 flex justify-between items-center bg-violet-100 border-b-2 border-gray-400 sticky top-0 ">
       <div>
         <h2>
-          <FaBars onClick={handleToggle} />
+          <FaBars className="cursor-pointer" onClick={handleToggle} />
         </h2>
       </div>
       <div className="flex items-center gap-3">
