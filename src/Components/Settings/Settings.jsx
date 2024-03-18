@@ -1,6 +1,6 @@
 const Settings = () => {
   return (
-    <div>
+    <div className="p-5">
       <h2>This is Settings</h2>
     </div>
   );

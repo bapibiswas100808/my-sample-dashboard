@@ -1,6 +1,6 @@
 const Notification = () => {
   return (
-    <div>
+    <div className="p-5">
       <h2>This is notification</h2>
     </div>
   );

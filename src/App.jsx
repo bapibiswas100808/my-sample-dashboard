@@ -6,12 +6,15 @@ import Notification from "./Components/Notification/Notification";
 import Reports from "./Components/Reports/Reports";
 import Header from "./Components/Header/Header";
 import Settings from "./Components/Settings/Settings";
+import { useState } from "react";
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleToggle = () => setIsOpen(!isOpen);
   return (
     <BrowserRouter>
-      <SideBar>
-        <Header></Header>
+      <SideBar isOpen={isOpen}>
+        <Header handleToggle={handleToggle}></Header>
         <Routes>
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/notification" element={<Notification />} />

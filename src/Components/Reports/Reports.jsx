@@ -1,6 +1,6 @@
 const Reports = () => {
   return (
-    <div>
+    <div className="p-5">
       <h2>This is reports</h2>
     </div>
   );
