@@ -1,12 +1,32 @@
 import { FaBars } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-const Header = ({ handleToggle }) => {
+const Header = ({ handleToggle, setIsOpen }) => {
+  const [showBars, setShowBars] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowBars(window.innerWidth > 991);
+      if (window.innerWidth < 991) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [setIsOpen]);
+
   return (
     <div className="text-black p-3 flex justify-between items-center bg-violet-100 border-b-2 border-gray-400 sticky top-0 ">
       <div>
         <h2>
-          <FaBars className="cursor-pointer" onClick={handleToggle} />
+          {showBars && (
+            <FaBars className="cursor-pointer" onClick={handleToggle} />
+          )}
         </h2>
       </div>
       <div className="flex items-center gap-3">
@@ -32,5 +52,6 @@ const Header = ({ handleToggle }) => {
 };
 Header.propTypes = {
   handleToggle: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
 };
 export default Header;

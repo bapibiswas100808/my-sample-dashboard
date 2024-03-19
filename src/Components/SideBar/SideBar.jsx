@@ -272,11 +272,15 @@ const SideBar = ({ children, isOpen }) => {
     },
     { name: "Blogs", id: 44, icon: <MdLocalShipping />, path: "/blogs" },
   ];
+
   return (
     <div className="flex">
       <div
-        style={{ width: isOpen ? "250px" : "50px" }}
-        className="h-full bg-blue-950 text-white"
+        style={{
+          width: isOpen ? "250px" : "50px",
+          // transition: "all 0.2s ease",
+        }}
+        className="min-h-screen  bg-blue-950 text-white"
       >
         <div className=" p-[22px] sticky top-0 flex justify-center z-10 bg-blue-800">
           <h2 className="text-white ">{isOpen ? "Logo" : "LG"}</h2>
@@ -299,6 +303,7 @@ const SideBar = ({ children, isOpen }) => {
                   >
                     <NavLinks
                       item={subItem}
+                      subItems={item.subItems ? item.subItems : null}
                       idx={subIdx}
                       isOpen={isOpen}
                       handleIsOpen={handleIsOpen}
@@ -309,7 +314,7 @@ const SideBar = ({ children, isOpen }) => {
           ))}
         </div>
       </div>
-      <main className="w-full bg-violet-100">{children}</main>
+      <main className="w-full min-h-screen bg-violet-100">{children}</main>
     </div>
   );
 };

@@ -11,7 +11,7 @@ import { useState } from "react";
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 991) {
       setIsOpen(!isOpen);
     }
   };
@@ -19,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <SideBar isOpen={isOpen}>
-        <Header handleToggle={handleToggle}></Header>
+        <Header handleToggle={handleToggle} setIsOpen={setIsOpen}></Header>
         <Routes>
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/notification" element={<Notification />} />
