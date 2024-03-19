@@ -10,7 +10,12 @@ import { useState } from "react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = () => setIsOpen(!isOpen);
+  const handleToggle = () => {
+    if (window.innerWidth > 768) {
+      setIsOpen(!isOpen);
+    }
+  };
+
   return (
     <BrowserRouter>
       <SideBar isOpen={isOpen}>

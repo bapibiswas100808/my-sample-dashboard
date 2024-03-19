@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
   MdDashboard,
@@ -16,6 +15,7 @@ import {
 } from "react-icons/md";
 
 import { useState } from "react";
+import NavLinks from "../NavLinks/NavLinks";
 
 const SideBar = ({ children, isOpen }) => {
   const [isSettingOpen, setIsSettingOpen] = useState(null);
@@ -278,48 +278,32 @@ const SideBar = ({ children, isOpen }) => {
         style={{ width: isOpen ? "250px" : "50px" }}
         className="h-full bg-blue-950 text-white"
       >
-        <div className="flex p-[22px] justify-between bg-white sticky top-0">
-          <h2 className="text-green-950">{isOpen ? "Logo" : "LG"}</h2>
+        <div className=" p-[22px] sticky top-0 flex justify-center z-10 bg-blue-800">
+          <h2 className="text-white ">{isOpen ? "Logo" : "LG"}</h2>
         </div>
-        <div className="flex flex-col mt-5">
+        <div className="flex flex-col mt-5 -z-10">
           {menuItems.map((item, idx) => (
-            <div key={idx}>
-              <NavLink
-                className="flex items-center gap-2 py-2 pl-3 hover:bg-[#0a011495] mb-2"
-                activeclassname="active"
-                to={item.path}
-                onClick={() => item.subItems && handleIsOpen(idx)}
-              >
-                {/* <span className="text-xl"> {item?.icon}</span> */}
-                <div
-                  className="tooltip tooltip-success tooltip-right"
-                  data-tip={item.name}
-                >
-                  <button className="">{item.icon}</button>
-                </div>
-                <span style={{ display: isOpen ? "block" : "none" }}>
-                  {item.name}
-                </span>
-              </NavLink>
+            <div key={idx} className="mb-1">
+              <NavLinks
+                item={item}
+                idx={idx}
+                isOpen={isOpen}
+                handleIsOpen={handleIsOpen}
+              ></NavLinks>
               {idx === isSettingOpen &&
                 item.subItems &&
                 item.subItems.map((subItem, subIdx) => (
-                  <NavLink
+                  <div
                     key={subIdx}
-                    className="flex items-center gap-2 py-2 pl-6 hover:bg-[#0a011495] mb-2"
-                    activeclassname="active"
-                    to={subItem.path}
+                    className="px-2 bg-[#321ba695] text-sm pt-1"
                   >
-                    <div
-                      className="tooltip tooltip-success tooltip-right"
-                      data-tip={subItem.name}
-                    >
-                      <button className="">{subItem.icon}</button>
-                    </div>
-                    <span style={{ display: isOpen ? "block" : "none" }}>
-                      {subItem.name}
-                    </span>
-                  </NavLink>
+                    <NavLinks
+                      item={subItem}
+                      idx={subIdx}
+                      isOpen={isOpen}
+                      handleIsOpen={handleIsOpen}
+                    ></NavLinks>
+                  </div>
                 ))}
             </div>
           ))}
