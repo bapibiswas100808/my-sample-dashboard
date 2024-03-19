@@ -25,7 +25,7 @@ const SideBar = ({ children, isOpen }) => {
   const menuItems = [
     { name: "Dashboard", id: 1, icon: <MdDashboard />, path: "/dashboard" },
     {
-      name: "Send Notifications",
+      name: "Notifications",
       id: 2,
       icon: <MdNotificationsActive />,
       path: "/notification",
@@ -278,9 +278,9 @@ const SideBar = ({ children, isOpen }) => {
       <div
         style={{
           width: isOpen ? "250px" : "50px",
-          // transition: "all 0.2s ease",
+          transition: "all 0.5s ease",
         }}
-        className="min-h-screen  bg-blue-950 text-white"
+        className="min-h-screen  bg-blue-950 text-white "
       >
         <div className=" p-[22px] sticky top-0 flex justify-center z-10 bg-blue-800">
           <h2 className="text-white ">{isOpen ? "Logo" : "LG"}</h2>
