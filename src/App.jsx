@@ -10,16 +10,24 @@ import { useState } from "react";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClose, setIsClose] = useState(false);
   const handleToggle = () => {
     if (window.innerWidth > 991) {
       setIsOpen(!isOpen);
+    }
+    if (window.innerWidth < 991) {
+      setIsClose(!isClose);
     }
   };
 
   return (
     <BrowserRouter>
-      <SideBar isOpen={isOpen}>
-        <Header handleToggle={handleToggle} setIsOpen={setIsOpen}></Header>
+      <SideBar isOpen={isOpen} isClose={isClose}>
+        <Header
+          handleToggle={handleToggle}
+          setIsOpen={setIsOpen}
+          isClose={isClose}
+        ></Header>
         <Routes>
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/notification" element={<Notification />} />

@@ -17,8 +17,9 @@ import {
 import { useState } from "react";
 import NavLinks from "../NavLinks/NavLinks";
 
-const SideBar = ({ children, isOpen }) => {
+const SideBar = ({ children, isOpen, isClose }) => {
   const [isSettingOpen, setIsSettingOpen] = useState(null);
+
   const handleIsOpen = (idx) => {
     setIsSettingOpen(idx === isSettingOpen ? null : idx);
   };
@@ -277,12 +278,12 @@ const SideBar = ({ children, isOpen }) => {
     <div className="flex">
       <div
         style={{
-          width: isOpen ? "250px" : "50px",
+          width: isOpen ? "250px" : isClose ? "0px" : "50px",
           transition: "all 0.5s ease",
         }}
         className="min-h-screen  bg-blue-950 text-white "
       >
-        <div className=" p-[22px] sticky top-0 flex justify-center z-10 bg-blue-800">
+        <div className=" p-[22px] sticky top-0 flex justify-center z-10 bg-blue-800 min-w-[50px]">
           <h2 className="text-white ">{isOpen ? "Logo" : "LG"}</h2>
         </div>
         <div className="flex flex-col mt-5 -z-10">
@@ -293,6 +294,7 @@ const SideBar = ({ children, isOpen }) => {
                 idx={idx}
                 isOpen={isOpen}
                 handleIsOpen={handleIsOpen}
+                isClose={isClose}
               ></NavLinks>
               {idx === isSettingOpen &&
                 item.subItems &&
@@ -322,6 +324,7 @@ const SideBar = ({ children, isOpen }) => {
 SideBar.propTypes = {
   children: PropTypes.array.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  isClose: PropTypes.bool,
 };
 
 export default SideBar;
