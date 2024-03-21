@@ -23,11 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <SideBar isOpen={isOpen} isClose={isClose}>
-        <Header
-          handleToggle={handleToggle}
-          setIsOpen={setIsOpen}
-          isClose={isClose}
-        ></Header>
+        <Header handleToggle={handleToggle} setIsOpen={setIsOpen}></Header>
         <Routes>
           <Route path="/dashboard" element={<DashBoard />} />
           <Route path="/notification" element={<Notification />} />

@@ -281,9 +281,9 @@ const SideBar = ({ children, isOpen, isClose }) => {
           width: isOpen ? "250px" : isClose ? "0px" : "50px",
           transition: "all 0.5s ease",
         }}
-        className="min-h-screen  bg-blue-950 text-white "
+        className="max-h-screen  bg-blue-950 text-white overflow-auto z-50"
       >
-        <div className=" p-[22px] sticky top-0 flex justify-center z-10 bg-blue-800 min-w-[50px]">
+        <div className=" p-[22px] sticky top-0 flex justify-center z-50 bg-blue-800 min-w-[50px] ">
           <h2 className="text-white ">{isOpen ? "Logo" : "LG"}</h2>
         </div>
         <div className="flex flex-col mt-5 -z-10">
@@ -316,7 +316,7 @@ const SideBar = ({ children, isOpen, isClose }) => {
           ))}
         </div>
       </div>
-      <main className="w-full min-h-screen bg-violet-100">{children}</main>
+      <main className="w-full min-h-screen bg-violet-100 z-0">{children}</main>
     </div>
   );
 };

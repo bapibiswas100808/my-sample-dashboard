@@ -6,7 +6,7 @@ import { ImProfile } from "react-icons/im";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { IoLogOutOutline } from "react-icons/io5";
 
-const Header = ({ handleToggle, setIsOpen, isClose }) => {
+const Header = ({ handleToggle, setIsOpen }) => {
   const iconRef = useRef(null);
   const [showOptions, setShowOptions] = useState(false);
   useEffect(() => {
@@ -36,7 +36,7 @@ const Header = ({ handleToggle, setIsOpen, isClose }) => {
 
   return (
     <div
-      style={{ paddingLeft: isClose ? "65px" : "20px" }}
+      // style={{ paddingLeft: isClose ? "65px" : "20px" }}
       className="text-black p-3 flex justify-between items-center bg-violet-100 border-b-2 border-gray-400 sticky top-0"
     >
       <div>
@@ -88,6 +88,5 @@ const Header = ({ handleToggle, setIsOpen, isClose }) => {
 Header.propTypes = {
   handleToggle: PropTypes.func.isRequired,
   setIsOpen: PropTypes.func.isRequired,
-  isClose: PropTypes.bool,
 };
 export default Header;
